@@ -1,53 +1,16 @@
 import React from "react";
-import "./home.css";
+import Header from "./Header";
+import { Link } from "react-router-dom";
+import "./style.css";
 
 const Home = () => {
   return (
     <>
       {/*Navigation bar*/}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light navbar navbar-default navbar-fixed-top">
-        <a className="navbar-brand" href="index.html">
-          Men<span>tor</span>
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto">
-            <li>
-              <a href="#feature">Features</a>
-            </li>
-            <li>
-              <a href="#organisations">Organisations</a>
-            </li>
-            <li>
-              <a href="#courses">Courses</a>
-            </li>
-            <li>
-              <a href="#pricing">Pricing</a>
-            </li>
-            <li>
-              <a href="#" data-target="#login" data-toggle="modal">
-                Sign in
-              </a>
-            </li>
-            <li className="btn-trial">
-              <a href="#footer">Free Trail</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Header/>
+      {/* Navigation bar*/}
 
-      {/*/ Navigation bar*/}
-      {/*Modal box*/}
+      {/*Login Modal*/}
       <div className="modal fade" id="login" role="dialog">
         <div className="modal-dialog  ">
           {/* Modal content no 1*/}
@@ -145,40 +108,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/*/ Modal box*/}
-
-      <div className="modal fade" tabIndex={-1} role="dialog">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Login Modal*/}
 
       {/*Banner*/}
       <div className="banner">
@@ -186,20 +116,19 @@ const Home = () => {
           <div className="container">
             <div className="banner-text text-center">
               <div className="text-border">
-                <h2 className="text-dec">Trust &amp; Quality</h2>
+                <h2 className="text-dec">FAST &amp; EASY</h2>
               </div>
               <div className="intro-para text-center quote">
                 <p className="big-text">
-                  Learning Today . . . Leading Tomorrow.
+                  Start making your Exam today.
                 </p>
                 <p className="small-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Laudantium enim repellat sapiente quos architecto
+                  Fastest and easiest way to create exams with the largest database of question banks of all boards in Karachi.
                   <br />
-                  Laudantium enim repellat sapiente quos architecto
+                  Start your free trial by clicking the button below.
                 </p>
                 <a href="#footer" className="btn get-quote">
-                  GET A QUOTE
+                  CREATE EXAM FREE
                 </a>
               </div>
             </div>
@@ -213,9 +142,9 @@ const Home = () => {
           <div className="header-section text-center">
             <h2>Features</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Exercitationem nesciunt vitae,
-              <br /> maiores, magni dolorum aliquam.
+              Quality features are provided with the cheapest rates.
+              Our promise, your belief.
+              <br /> An application that brings ease in the teacher's life.
             </p>
             <hr className="bottom-line" />
           </div>
@@ -224,45 +153,45 @@ const Home = () => {
               <div className="col-md-4">
                 <div className="fea">
                   <div className="heading pull-right">
-                    <h4>Latest Technologies</h4>
+                    <h4>Exam/Test Maker</h4>
                     <p>
-                      Donec et lectus bibendum dolor dictum auctor in ac erat.
-                      Vestibulum egestas sollicitudin metus non urna in eros
-                      tincidunt convallis id id nisi in interdum.
+                      We provide a platform where you can create your daily tests and 
+                      exams in a minute with our largest question bank of all boards in Karachi.
                     </p>
                   </div>
                   <div className="fea-img pull-left">
-                    <i className="fa fa-css3" />
+                  <Link to="/exam-maker"><i class="fas zoom fa-arrow-circle-right"></i></Link>
+                  
                   </div>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="fea">
                   <div className="heading pull-right">
-                    <h4>Toons Background</h4>
+                    <h4>Custom Question Bank</h4>
                     <p>
-                      Donec et lectus bibendum dolor dictum auctor in ac erat.
-                      Vestibulum egestas sollicitudin metus non urna in eros
-                      tincidunt convallis id id nisi in interdum.
+                      We provide you a customizable largest question bank of all
+                      past papers of all boards in Karachi. You are allowed to add
+                      custom questions.
                     </p>
                   </div>
                   <div className="fea-img pull-left">
-                    <i className="fa fa-drupal" />
+                  <Link to="/exam-maker"><i class="fas zoom fa-arrow-circle-right"></i></Link>
                   </div>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="fea">
                   <div className="heading pull-right">
-                    <h4>Award Winning Design</h4>
+                    <h4>Conduct Test Online</h4>
                     <p>
-                      Donec et lectus bibendum dolor dictum auctor in ac erat.
-                      Vestibulum egestas sollicitudin metus non urna in eros
-                      tincidunt convallis id id nisi in interdum.
+                      We provide an online platform where you can conduct test online
+                      by just sending the link to your students or just by registering 
+                      them here.
                     </p>
                   </div>
                   <div className="fea-img pull-left">
-                    <i className="fa fa-trophy" />
+                  <Link to="/test-conduct"><i class="fas zoom fa-arrow-circle-right"></i></Link>
                   </div>
                 </div>
               </div>
@@ -281,21 +210,21 @@ const Home = () => {
                   <div className="orga-stru">
                     <h3>65%</h3>
                     <p>Say NO!!</p>
-                    <i className="fa fa-male" />
+                    <i class="fas fa-male"></i>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                   <div className="orga-stru">
                     <h3>20%</h3>
                     <p>Says Yes!!</p>
-                    <i className="fa fa-male" />
+                    <i class="fas fa-male"></i>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                   <div className="orga-stru">
                     <h3>15%</h3>
                     <p>Can't Say!!</p>
-                    <i className="fa fa-male" />
+                    <i class="fas fa-male"></i>
                   </div>
                 </div>
               </div>
@@ -307,7 +236,7 @@ const Home = () => {
                     {" "}
                     Is inclusive quality education affordable?
                   </h3>
-                  <h4 className="sm-txt">(Revised and Updated for 2016)</h4>
+                  <h4 className="sm-txt">(Revised and Updated for 2021)</h4>
                 </hgroup>
                 <p className="det-p">
                   Donec et lectus bibendum dolor dictum auctor in ac erat.
@@ -327,8 +256,7 @@ const Home = () => {
             <div className="col-lg-12">
               <h2 className="text-center">Subscribe Now</h2>
               <p className="cta-2-txt">
-                Sign up for our free weekly software design courses, we’ll send
-                them right to your inbox.
+                Sign up to make your exams and tests with least effort in a minute.
               </p>
               <div className="cta-2-form text-center">
                 <form action="#" method="post" id="workshop-newsletter-form">
@@ -353,11 +281,10 @@ const Home = () => {
       <section id="work-shop" className="section-padding">
         <div className="container">
           <div className="header-section text-center">
-            <h2>Upcoming Workshop</h2>
+            <h2>Upcoming Features</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Exercitationem nesciunt vitae,
-              <br /> maiores, magni dolorum aliquam.
+              We are always working at our best to provide you with best features.
+              <br /> Some of our new features coming soon.
             </p>
             <hr className="bottom-line" />
           </div>
@@ -365,30 +292,30 @@ const Home = () => {
             <div className="col-md-4 col-sm-6">
               <div className="service-box text-center">
                 <div className="icon-box">
-                  <i className="fa fa-html5 color-green" />
+                <i class="fas fa-landmark"></i>
                 </div>
                 <div className="icon-text">
-                  <h4 className="ser-text">Mentor HTML5 Workshop</h4>
+                  <h4 className="ser-text">Punjab Board <br/> Question Bank</h4>
                 </div>
               </div>
             </div>
             <div className="col-md-4 col-sm-6">
               <div className="service-box text-center">
                 <div className="icon-box">
-                  <i className="fa fa-css3 color-green" />
+                <i class="fas fa-landmark"></i>
                 </div>
                 <div className="icon-text">
-                  <h4 className="ser-text">Mentor CSS3 Workshop</h4>
+                  <h4 className="ser-text">Federal Board <br/> Question Bank</h4>
                 </div>
               </div>
             </div>
             <div className="col-md-4 col-sm-6">
               <div className="service-box text-center">
                 <div className="icon-box">
-                  <i className="fa fa-joomla color-green" />
+                <i class="fas fa-user-graduate"></i>
                 </div>
                 <div className="icon-text">
-                  <h4 className="ser-text">Mentor Joomla Workshop</h4>
+                  <h4 className="ser-text">Student Online Attendance Portal</h4>
                 </div>
               </div>
             </div>
@@ -421,9 +348,9 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="pm-staff-profile-details text-center">
-                  <p className="pm-staff-profile-name">Bryan Johnson</p>
+                  <p className="pm-staff-profile-name">Syed Muhammad Hammad</p>
                   <p className="pm-staff-profile-title">
-                    Lead Software Engineer
+                    Co-Founder FelcaSoft
                   </p>
                   <p className="pm-staff-profile-bio">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -445,9 +372,9 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="pm-staff-profile-details text-center">
-                  <p className="pm-staff-profile-name">Bryan Johnson</p>
+                  <p className="pm-staff-profile-name">Syed Muhammad Taha</p>
                   <p className="pm-staff-profile-title">
-                    Lead Software Engineer
+                    Co-Founder FelcaSoft
                   </p>
                   <p className="pm-staff-profile-bio">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -469,9 +396,9 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="pm-staff-profile-details text-center">
-                  <p className="pm-staff-profile-name">Bryan Johnson</p>
+                  <p className="pm-staff-profile-name">Faraz ke Bhai</p>
                   <p className="pm-staff-profile-title">
-                    Lead Software Engineer
+                    Professional Teacher
                   </p>
                   <p className="pm-staff-profile-bio">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -521,7 +448,7 @@ const Home = () => {
       </section>
       {/*/ Testimonial*/}
       {/*Courses*/}
-      <section id="courses" className="section-padding">
+      {/* <section id="courses" className="section-padding">
         <div className="container">
           <div className="header-section text-center">
             <h2>Courses</h2>
@@ -621,7 +548,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/*/ Courses*/}
       {/*Pricing*/}
       <section id="pricing" className="section-padding">
@@ -842,7 +769,7 @@ const Home = () => {
               </a>
             </li>
           </ul>
-          ©2022 ExamMaker. All rights reserved
+          ©2022 MyExam-Maker. All rights reserved
           <div className="credits"></div>
         </div>
       </footer>
