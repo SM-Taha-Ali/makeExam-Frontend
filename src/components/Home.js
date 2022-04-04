@@ -447,11 +447,11 @@ const Home = () => {
         </div>
       </section>
       {/*/ Testimonial*/}
-      {/*Courses*/}
-      {/* <section id="courses" className="section-padding">
+      {/* Courses*/}
+      <section id="templates" className="section-padding">
         <div className="container">
           <div className="header-section text-center">
-            <h2>Courses</h2>
+            <h2>Our Templates</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Exercitationem nesciunt vitae,
@@ -461,94 +461,67 @@ const Home = () => {
           </div>
         </div>
         <div className="container">
+          
+          
           <div className="row">
-            <div className="col-md-4 col-sm-6 padleft-right">
-              <figure className="imghvr-fold-up">
-                <img src="img/course01.jpg" className="img-responsive" />
-                <figcaption>
-                  <h3>Course Name</h3>
+           
+            <div className="card kboard col-md-4 col-sm-6 padleft-right">
+            {/* <h3>Karachi Board Template</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Magnam atque, nostrum veniam consequatur libero fugiat,
                     similique quis.
-                  </p>
-                </figcaption>
-                <a href="#" />
-              </figure>
+                  </p> */}
+      <div className="card" > 
+      <img className="kboard-img-top" src="" alt="Card image cap" />
+        <div className="card-body">
+          <h5 className="card-title">Karachi Board Template</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" className="btn btn-success">Get Template</a>
+        </div>
+        </div>
             </div>
-            <div className="col-md-4 col-sm-6 padleft-right">
-              <figure className="imghvr-fold-up">
-                <img src="img/course02.jpg" className="img-responsive" />
-                <figcaption>
-                  <h3>Course Name</h3>
+            <div className="fboard col-md-4 col-sm-6 padleft-right">
+              
+                  {/* <h3>Federal Board Template</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Magnam atque, nostrum veniam consequatur libero fugiat,
                     similique quis.
-                  </p>
-                </figcaption>
-                <a href="#" />
-              </figure>
+                  </p> */}
+          <div className="card" > 
+        <img className="fboard-img-top" src="fboard.jpg" alt="Card image cap" />
+        <div className="card-body">
+          <h5 className="card-title">Federal Board Template</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" className="btn btn-success">Get Template</a>
+        </div>
+        </div>
             </div>
-            <div className="col-md-4 col-sm-6 padleft-right">
-              <figure className="imghvr-fold-up">
-                <img src="img/course03.jpg" className="img-responsive" />
-                <figcaption>
-                  <h3>Course Name</h3>
+            <div className="cboard col-md-4 col-sm-6 padleft-right">
+              
+                  {/* <h3>Cambridge Board Template</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Magnam atque, nostrum veniam consequatur libero fugiat,
                     similique quis.
-                  </p>
-                </figcaption>
-                <a href="#" />
-              </figure>
-            </div>
-            <div className="col-md-4 col-sm-6 padleft-right">
-              <figure className="imghvr-fold-up">
-                <img src="img/course04.jpg" className="img-responsive" />
-                <figcaption>
-                  <h3>Course Name</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Magnam atque, nostrum veniam consequatur libero fugiat,
-                    similique quis.
-                  </p>
-                </figcaption>
-                <a href="#" />
-              </figure>
-            </div>
-            <div className="col-md-4 col-sm-6 padleft-right">
-              <figure className="imghvr-fold-up">
-                <img src="img/course05.jpg" className="img-responsive" />
-                <figcaption>
-                  <h3>Course Name</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Magnam atque, nostrum veniam consequatur libero fugiat,
-                    similique quis.
-                  </p>
-                </figcaption>
-                <a href="#" />
-              </figure>
-            </div>
-            <div className="col-md-4 col-sm-6 padleft-right">
-              <figure className="imghvr-fold-up">
-                <img src="img/course06.jpg" className="img-responsive" />
-                <figcaption>
-                  <h3>Course Name</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Magnam atque, nostrum veniam consequatur libero fugiat,
-                    similique quis.
-                  </p>
-                </figcaption>
-                <a href="#" />
-              </figure>
-            </div>
+                  </p> */}
+      
+      {/* <div className="card" >  */}
+      <div className="card" > 
+      <img className="cboard-img-top" src="..." alt="Card image cap" />
+        <div className="card-body">
+          <h5 className="card-title">Cambridge Board Template</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" className="btn btn-success">Get Template</a>
+        </div>
+        </div>
+
+        </div>
+        
           </div>
         </div>
-      </section> */}
+      </section>
       {/*/ Courses*/}
       {/*Pricing*/}
       <section id="pricing" className="section-padding">

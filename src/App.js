@@ -3,6 +3,7 @@ import './App.css';
 import Home from "./components/Home"
 import ExamMaker from "./components/ExamMaker/ExamMaker"
 import TestConduct from "./components/TestConduct/TestConduct"
+import PreExamForm from "./components/ExamMaker/PreExamForm"
 
 
 import {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/exam-maker" element={<ExamMaker />} />
           <Route path="/test-conduct" element={<TestConduct />} />
+          <Route path ="pre-exam-form" element = {<PreExamForm/>}/>
         </Routes>
       </BrowserRouter>
     </>
