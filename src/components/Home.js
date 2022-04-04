@@ -12,7 +12,7 @@ const Home = () => {
 
       {/*Login Modal*/}
       <div className="modal fade" id="login" role="dialog">
-        <div className="modal-dialog  ">
+        <div className="modal-dialog modal-dialog-centered">
           {/* Modal content no 1*/}
           <div className="modal-content">
             <div className="modal-header">
@@ -160,7 +160,7 @@ const Home = () => {
                     </p>
                   </div>
                   <div className="fea-img pull-left">
-                  <Link to="/exam-maker"><i class="fas zoom fa-arrow-circle-right"></i></Link>
+                  <Link to="/exam-maker"><i className="fas zoom fa-arrow-circle-right"></i></Link>
                   
                   </div>
                 </div>
@@ -176,7 +176,7 @@ const Home = () => {
                     </p>
                   </div>
                   <div className="fea-img pull-left">
-                  <Link to="/exam-maker"><i class="fas zoom fa-arrow-circle-right"></i></Link>
+                  <Link to="/exam-maker"><i className="fas zoom fa-arrow-circle-right"></i></Link>
                   </div>
                 </div>
               </div>
@@ -191,7 +191,7 @@ const Home = () => {
                     </p>
                   </div>
                   <div className="fea-img pull-left">
-                  <Link to="/test-conduct"><i class="fas zoom fa-arrow-circle-right"></i></Link>
+                  <Link to="/test-conduct"><i className="fas zoom fa-arrow-circle-right"></i></Link>
                   </div>
                 </div>
               </div>
@@ -210,21 +210,21 @@ const Home = () => {
                   <div className="orga-stru">
                     <h3>65%</h3>
                     <p>Say NO!!</p>
-                    <i class="fas fa-male"></i>
+                    <i className="fas fa-male"></i>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                   <div className="orga-stru">
                     <h3>20%</h3>
                     <p>Says Yes!!</p>
-                    <i class="fas fa-male"></i>
+                    <i className="fas fa-male"></i>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                   <div className="orga-stru">
                     <h3>15%</h3>
                     <p>Can't Say!!</p>
-                    <i class="fas fa-male"></i>
+                    <i className="fas fa-male"></i>
                   </div>
                 </div>
               </div>
@@ -292,7 +292,7 @@ const Home = () => {
             <div className="col-md-4 col-sm-6">
               <div className="service-box text-center">
                 <div className="icon-box">
-                <i class="fas fa-landmark"></i>
+                <i className="fas fa-landmark"></i>
                 </div>
                 <div className="icon-text">
                   <h4 className="ser-text">Punjab Board <br/> Question Bank</h4>
@@ -302,7 +302,7 @@ const Home = () => {
             <div className="col-md-4 col-sm-6">
               <div className="service-box text-center">
                 <div className="icon-box">
-                <i class="fas fa-landmark"></i>
+                <i className="fas fa-landmark"></i>
                 </div>
                 <div className="icon-text">
                   <h4 className="ser-text">Federal Board <br/> Question Bank</h4>
@@ -312,7 +312,7 @@ const Home = () => {
             <div className="col-md-4 col-sm-6">
               <div className="service-box text-center">
                 <div className="icon-box">
-                <i class="fas fa-user-graduate"></i>
+                <i className="fas fa-user-graduate"></i>
                 </div>
                 <div className="icon-text">
                   <h4 className="ser-text">Student Online Attendance Portal</h4>
