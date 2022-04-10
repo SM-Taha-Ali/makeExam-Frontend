@@ -11,10 +11,19 @@ const ExamMaker = () => {
   const pastPaperRef = useRef(null)
   const questionBankRef = useRef(null)
 
-  const bankpapers = [
-    { value: 'multipart', label: 'Multi-Part', name: "bankpaper" },
-    { value: 'single', label: 'Single', name: "bankpaper" },
-    { value: 'mcq', label: 'MCQ', name: "bankpaper" },
+  const sections = [
+    { value: 'Section-A', label: 'Section-A', name: "section" },
+    { value: 'Section-B', label: 'Section-B', name: "section" },
+    { value: 'Section-C', label: 'Section-C', name: "section" },
+  ];
+  const years = [
+    { value: '2015', label: '2015', name: "year" },
+    { value: '2016', label: '2016', name: "year" },
+    { value: '2017', label: '2017', name: "year" },
+    { value: '2018', label: '2018', name: "year" },
+    { value: '2019', label: '2019', name: "year" },
+    { value: '2020', label: '2020', name: "year" },
+    { value: '2021', label: '2021', name: "year" },
   ];
 
   const [bankQuest, setbankQuest] = useState({ bankpaper: "" })
@@ -28,7 +37,7 @@ const ExamMaker = () => {
   }
 
   const [selectedQuest, setselectedQuest] = useState([])
-  const [currentQuest, setcurrentQuest] = useState({question:"", part:[]})
+  const [currentQuest, setcurrentQuest] = useState({ question: "", part: [] })
 
   const questRef = () => {
     questionBankRef.current.click();
@@ -38,8 +47,42 @@ const ExamMaker = () => {
 
   const [checkedClass, setcheckedClass] = useState(false)
 
+  const pastQuestions = [
+    {
+      id: 1,
+      year: 2017,
+      section: "A",
+      marks: "12",
+      question: "pehlaHow did Pakistan came into being? Who was the founder of Pakistan? Write briefly.",
+      subQuestion: [{ question: "ok this is subpart", subFurther: [{ question: "ok this is subpart" }] }]
+    },
+    {
+      id: 1,
+      year: 2017,
+      section: "A",
+      marks: "12",
+      question: "dusraHow did Pakistan came into being? Who was the founder of Pakistan? Write briefly.",
+      subQuestion: [{ question: "ok this is subpart", subFurther: [{ question: "ok this is subpart" }] }]
+    },
+    {
+      id: 1,
+      year: 2017,
+      section: "A",
+      marks: "12",
+      question: "teesraHow did Pakistan came into being? Who was the founder of Pakistan? Write briefly.",
+      subQuestion: [{ question: "ok this is subpart", subFurther: [{ question: "ok this is subpart" }] }]
+    },
+    {
+      id: 1,
+      year: 2017,
+      section: "A",
+      marks: "12",
+      question: "chohtaHow did Pakistan came into being? Who was the founder of Pakistan? Write briefly.",
+      subQuestion: [{ question: "ok this is subpart", subFurther: [{ question: "ok this is subpart" }] }]
+    },
+  ]
+
   const addDefaultVal = (e) => {
-    console.log();
     setcheckedClass(true)
     // setcurrentQuest(...currentQuest, {question:`${(((e.target).parentNode).previousElementSibling).childNodes[0].textContent}`, part:`${(((e.target).parentNode).previousElementSibling).childNodes[x].textContent}`})
   }
@@ -147,7 +190,6 @@ const ExamMaker = () => {
       </div>
       {/* Login Modal*/}
 
-
       {/* Past Papers Modal */}
 
       <div>
@@ -164,7 +206,7 @@ const ExamMaker = () => {
               </div>
               <div className="modal-body">
                 <div className="mb-4 row">
-                  <div className="col-md-8">
+                  <div className="col-md-4">
                     <div className="input-group mb-3 search_box">
                       <input type="text" className="form-control" placeholder="Search questions..." aria-label="Username" aria-describedby="basic-addon1" />
                       <span className="input-group-text bg_default" id="basic-addon1"><i className="fas fa-search"></i></span>
@@ -175,10 +217,22 @@ const ExamMaker = () => {
                       <Select
                         defaultValue={null}
                         onChange={onChange}
-                        options={bankpapers}
+                        options={sections}
                         width={100}
-                        name="bankpaper"
-                        placeholder="Question Type"
+                        name="section"
+                        placeholder="Section"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <div>
+                      <Select
+                        defaultValue={null}
+                        onChange={onChange}
+                        options={years}
+                        width={100}
+                        name="year"
+                        placeholder="Year"
                       />
                     </div>
                   </div>
@@ -189,40 +243,36 @@ const ExamMaker = () => {
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Question</th>
-                      <th scope="col" className='text-center'>Action</th>
+                      <th scope="col" className=''>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>
-                        <p className='text-wrap'>
-                          How did Pakistan came into being? Who was the founder of Pakistan? Write briefly.
-                        </p>
-                        <p className='text-wrap'>
-                          (i) How did Pakistan came into being? Who was the founder of Pakistan? Write briefly.
-                        </p>
-                        <p className='text-wrap'>
-                          (ii) How did Pakistan came into being? Who was the founder of Pakistan? Write briefly.
-                        </p>
-                      </td>
-                      <td className='text-center'>
-                        <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" />
-                        <label class="btn btn-outline-success" for="btn-check-outlined" onClick={addDefaultVal}><i class="fas fa-check-circle"></i></label><br></br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>
-                        <p className='text-wrap'>
-                          How did Pakistan came into being? Who was the founder of Pakistan? Write briefly.
-                        </p>
-                      </td>
-                      <td className='text-center'>
-                        <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" />
-                        <label class="btn btn-outline-success" for="btn-check-outlined" onClick={addDefaultVal}><i class="fas fa-check-circle"></i></label><br></br>
-                      </td>
-                    </tr>
+                    {
+                      pastQuestions.map((question, i) => {
+                        return <tr>
+                          <td>{i}</td>
+                          <td>
+                            <p className='text-wrap'>
+                            {question.question}
+                            </p>
+                            {question.subQuestion.map((subPart, j) => {
+                              return <p className='text-wrap ms-1'>
+                                {j} {subPart.question}
+                                {subPart.subFurther.map((subFur, k)=>{
+                                  <p className='text-wrap ms-2'>
+                                   {k} {subFur.question}
+                                </p>
+                                })}
+                              </p>
+                            })}
+                          </td>
+                          <td className='text-center'>
+                            <input class="form-check-input chkbox" type="checkbox" value="" id="flexCheckDefault" />
+                          </td>
+                        </tr>
+                      })
+                    }
+                    
                   </tbody>
                 </table>
               </div>
@@ -264,10 +314,10 @@ const ExamMaker = () => {
                       <Select
                         defaultValue={null}
                         onChange={onChange}
-                        options={bankpapers}
+                        options={sections}
                         width={100}
-                        name="bankpaper"
-                        placeholder="Question Type"
+                        name="section"
+                        placeholder="Section"
                       />
                     </div>
                   </div>

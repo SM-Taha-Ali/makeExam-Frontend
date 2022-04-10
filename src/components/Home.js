@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       {/*Navigation bar*/}
-      <Header/>
+      <Header />
       {/* Navigation bar*/}
 
       {/*Login Modal*/}
@@ -16,8 +16,8 @@ const Home = () => {
           {/* Modal content no 1*/}
           <div className="modal-content">
             <div className="modal-header">
-            <h4 className="modal-title d-flex flex-row justify-content-center">Login</h4>
-            <button
+              <h4 className="modal-title d-flex flex-row justify-content-center">Login</h4>
+              <button
                 type="button"
                 className="close"
                 data-dismiss="modal"
@@ -85,22 +85,22 @@ const Home = () => {
                       {/*-Alredy exists  ! */}
                       <span className="glyphicon glyphicon-lock form-control-feedback" />
                     </div>
-                      <div className="">
-                        <div className="checkbox icheck">
-                          <label>
-                            <input type="checkbox" id="loginrem" /> Remember Me
-                          </label>
-                        </div>
+                    <div className="">
+                      <div className="checkbox icheck">
+                        <label>
+                          <input type="checkbox" id="loginrem" /> Remember Me
+                        </label>
                       </div>
-                      <div className="">
-                        <button
-                          type="button"
-                          className="btn btn-green btn-block btn-flat"
-                          onclick="userlogin()"
-                        >
-                          Sign In
-                        </button>
-                      </div>
+                    </div>
+                    <div className="">
+                      <button
+                        type="button"
+                        className="btn btn-green btn-block btn-flat"
+                        onclick="userlogin()"
+                      >
+                        Sign In
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>
@@ -155,13 +155,13 @@ const Home = () => {
                   <div className="heading pull-right">
                     <h4>Exam/Test Maker</h4>
                     <p>
-                      We provide a platform where you can create your daily tests and 
+                      We provide a platform where you can create your daily tests and
                       exams in a minute with our largest question bank of all boards in Karachi.
                     </p>
                   </div>
                   <div className="fea-img pull-left">
-                  <Link to="/exam-maker"><i className="fas zoom fa-arrow-circle-right"></i></Link>
-                  
+                    <Link to="/exam-maker"><i className="fas zoom fa-arrow-circle-right"></i></Link>
+
                   </div>
                 </div>
               </div>
@@ -176,7 +176,7 @@ const Home = () => {
                     </p>
                   </div>
                   <div className="fea-img pull-left">
-                  <Link to="/exam-maker"><i className="fas zoom fa-arrow-circle-right"></i></Link>
+                    <Link to="/exam-maker"><i className="fas zoom fa-arrow-circle-right"></i></Link>
                   </div>
                 </div>
               </div>
@@ -186,12 +186,12 @@ const Home = () => {
                     <h4>Conduct Test Online</h4>
                     <p>
                       We provide an online platform where you can conduct test online
-                      by just sending the link to your students or just by registering 
+                      by just sending the link to your students or just by registering
                       them here.
                     </p>
                   </div>
                   <div className="fea-img pull-left">
-                  <Link to="/test-conduct"><i className="fas zoom fa-arrow-circle-right"></i></Link>
+                    <Link to="/test-conduct"><i className="fas zoom fa-arrow-circle-right"></i></Link>
                   </div>
                 </div>
               </div>
@@ -292,27 +292,27 @@ const Home = () => {
             <div className="col-md-4 col-sm-6">
               <div className="service-box text-center">
                 <div className="icon-box">
-                <i className="fas fa-landmark"></i>
+                  <i className="fas fa-landmark"></i>
                 </div>
                 <div className="icon-text">
-                  <h4 className="ser-text">Punjab Board <br/> Question Bank</h4>
+                  <h4 className="ser-text">Punjab Board <br /> Question Bank</h4>
                 </div>
               </div>
             </div>
             <div className="col-md-4 col-sm-6">
               <div className="service-box text-center">
                 <div className="icon-box">
-                <i className="fas fa-landmark"></i>
+                  <i className="fas fa-landmark"></i>
                 </div>
                 <div className="icon-text">
-                  <h4 className="ser-text">Federal Board <br/> Question Bank</h4>
+                  <h4 className="ser-text">Federal Board <br /> Question Bank</h4>
                 </div>
               </div>
             </div>
             <div className="col-md-4 col-sm-6">
               <div className="service-box text-center">
                 <div className="icon-box">
-                <i className="fas fa-user-graduate"></i>
+                  <i className="fas fa-user-graduate"></i>
                 </div>
                 <div className="icon-text">
                   <h4 className="ser-text">Student Online Attendance Portal</h4>
@@ -413,7 +413,7 @@ const Home = () => {
       </section>
       {/*/ Faculity member*/}
       {/*Testimonial*/}
-      <section id="testimonial" className="section-padding">
+      {/* <section id="testimonial" className="section-padding">
         <div className="container">
           <div className="header-section text-center">
             <h2 className="white">See What Our Customer Are Saying?</h2>
@@ -445,7 +445,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/*/ Testimonial*/}
       {/* Courses*/}
       <section id="templates" className="section-padding">
@@ -461,64 +461,44 @@ const Home = () => {
           </div>
         </div>
         <div className="container">
-          
-          
           <div className="row">
-           
-            <div className="card kboard col-md-4 col-sm-6 padleft-right">
-            {/* <h3>Karachi Board Template</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Magnam atque, nostrum veniam consequatur libero fugiat,
-                    similique quis.
-                  </p> */}
-      <div className="card" > 
-      <img className="kboard-img-top" src="" alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">Karachi Board Template</h5>
-          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" className="btn btn-success">Get Template</a>
-        </div>
-        </div>
+            <div className="kboard col-lg-4 col-md-12 p-3">
+              <div className="card" >
+                <div className="img-container">
+                  <img className="kboard-img" src="/images/kboard.png" alt="Card image cap" />
+                </div>
+                <div className="card-body">
+                  <h5 className="card-title">Karachi Board Template</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" className="btn btn-success">Get Template</a>
+                </div>
+              </div>
             </div>
-            <div className="fboard col-md-4 col-sm-6 padleft-right">
-              
-                  {/* <h3>Federal Board Template</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Magnam atque, nostrum veniam consequatur libero fugiat,
-                    similique quis.
-                  </p> */}
-          <div className="card" > 
-        <img className="fboard-img-top" src="fboard.jpg" alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">Federal Board Template</h5>
-          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" className="btn btn-success">Get Template</a>
-        </div>
-        </div>
+            <div className="fboard col-lg-4 col-md-12 p-3">
+              <div className="card" >
+              <div className="img-container">
+                <img className="fboard-img" src="/images/fboard.jpg" alt="Card image cap" />
+              </div>
+                <div className="card-body">
+                  <h5 className="card-title">Federal Board Template</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" className="btn btn-success">Get Template</a>
+                </div>
+              </div>
             </div>
-            <div className="cboard col-md-4 col-sm-6 padleft-right">
-              
-                  {/* <h3>Cambridge Board Template</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Magnam atque, nostrum veniam consequatur libero fugiat,
-                    similique quis.
-                  </p> */}
-      
-      {/* <div className="card" >  */}
-      <div className="card" > 
-      <img className="cboard-img-top" src="..." alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">Cambridge Board Template</h5>
-          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" className="btn btn-success">Get Template</a>
-        </div>
-        </div>
+            <div className="cboard col-lg-4 col-md-12 p-3">
+              <div className="card" >
+              <div className="img-container">
+                <img className="cboard-img" src="/images/cboard.jpg" alt="Card image cap" />
+              </div>
+                <div className="card-body">
+                  <h5 className="card-title">Cambridge Board Template</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" className="btn btn-success">Get Template</a>
+                </div>
+              </div>
+            </div>
 
-        </div>
-        
           </div>
         </div>
       </section>
@@ -678,41 +658,41 @@ const Home = () => {
           <h3>Start Your Free Trial Now!</h3>
           <form className="mc-trial">
             <div className="row">
-            <div className="form-group col-md-4 col-md-offset-2 col-sm-4">
-              <div className=" controls">
-                <input
-                  name="name"
-                  placeholder="Enter Your Name"
-                  className="form-control"
-                  type="text"
-                />
+              <div className="form-group col-md-4 col-md-offset-2 col-sm-4">
+                <div className=" controls">
+                  <input
+                    name="name"
+                    placeholder="Enter Your Name"
+                    className="form-control"
+                    type="text"
+                  />
+                </div>
+              </div>
+              {/* End email input */}
+              <div className="form-group col-md-4 col-sm-4">
+                <div className=" controls">
+                  <input
+                    name="EMAIL"
+                    placeholder="Enter Your email"
+                    className="form-control"
+                    type="email"
+                  />
+                </div>
+              </div>
+              {/* End email input */}
+              <div className="col-md-4 col-sm-4">
+                <p>
+                  <button
+                    name="submit"
+                    type="submit"
+                    className="btn btn-block btn-submit"
+                  >
+                    Submit <i className="fa fa-arrow-right" />
+                  </button>
+                </p>
               </div>
             </div>
-            {/* End email input */}
-            <div className="form-group col-md-4 col-sm-4">
-              <div className=" controls">
-                <input
-                  name="EMAIL"
-                  placeholder="Enter Your email"
-                  className="form-control"
-                  type="email"
-                />
-              </div>
-            </div>
-            {/* End email input */}
-            <div className="col-md-4 col-sm-4">
-              <p>
-                <button
-                  name="submit"
-                  type="submit"
-                  className="btn btn-block btn-submit"
-                >
-                  Submit <i className="fa fa-arrow-right" />
-                </button>
-              </p>
-            </div>
-            </div>
-            
+
           </form>
           {/* End newsletter-form */}
           <ul className="social-links">

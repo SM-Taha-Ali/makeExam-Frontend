@@ -39,6 +39,26 @@
       
 }
 
+.img-container{
+    padding: 25px;
+    text-align: center;
+}
+
+.kboard-img{
+    width: 100%;
+}
+
+.fboard-img{
+    width: 75%;
+}
+
+.cboard-img{
+    width: 75%;
+}
+
+.card{
+    min-height: 500px;
+}
 
 .kboard{
   width: 18rem;
@@ -53,4 +73,22 @@
    
     width: 18rem;
 
+}
+
+.width_10{
+    width: 20%;
+    border: 1px solid #04AA6D;
+}
+
+.chkbox:checked{
+    background-color: #04AA6D !important;
+    outline: green !important;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 255, 0, 0.25)  !important;
+}
+.chkbox{
+    box-shadow: none !important;
+}
+
+#pdf{
+    padding: 4px;
 }

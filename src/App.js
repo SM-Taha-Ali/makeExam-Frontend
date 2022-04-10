@@ -17,27 +17,17 @@ import {
 function App() {
   return (
     <>
-<<<<<<< HEAD
       <GlobalState>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/exam-maker" element={<ExamMaker />} />
+            <Route path="/exam-maker" element={<PreExamForm />} />
+              <Route path="/exam-maker-success" element={<ExamMaker />} />
             <Route path="/test-conduct" element={<TestConduct />} />
           </Routes>
         </BrowserRouter>
       </GlobalState>
 
-=======
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/exam-maker" element={<ExamMaker />} />
-          <Route path="/test-conduct" element={<TestConduct />} />
-          <Route path ="pre-exam-form" element = {<PreExamForm/>}/>
-        </Routes>
-      </BrowserRouter>
->>>>>>> f5e57f0b070e59db13c85fd8a322054578c5fdb6
     </>
   );
 }
