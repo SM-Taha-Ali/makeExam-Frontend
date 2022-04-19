@@ -57,7 +57,12 @@ const ExamMaker = () => {
       section: "A",
       marks: "12",
       question: "pehlaHow did Pakistan came into being? Who was the founder of Pakistan? Write briefly.",
-      subQuestion: [{ question: "ok this is subpart", subFurther: [{ question: "ok this is subpart" }] }]
+      subQuestion: [
+        { question: "ok this is subpart",
+         subFurther: [
+          { question: "ok this is subpart" }
+        ] }
+      ]
     },
     {
       id: 2,
@@ -313,7 +318,7 @@ const ExamMaker = () => {
                 <button type="button" className="btn btn-outline-success">Upload Image</button>
               </div>
             </div>
-            <Sidepane dfltval={dfltval} setdfltval={setdfltval} />
+            <Sidepane/>
           </div>
           <div className="preview_wrapper pt-4">
             <Preview />

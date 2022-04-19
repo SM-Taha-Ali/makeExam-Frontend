@@ -71,7 +71,7 @@ const Header = () => {
                             <button className="dropbtn"><i class="fas fa-user me-1"></i> {details.lastname}</button>
                             <div className="dropdown-content">
                                 {(details.role == "admin") ?
-                                    <Link to="/admin"><i class="fas fa-unlock-alt me-2"></i> Admin</Link>
+                                    <Link to="/admin/pastpapers"><i class="fas fa-unlock-alt me-2"></i> Admin</Link>
                                     : ""
                                 }
                                 <span onClick={logout}><i class="fas fa-sign-out-alt me-1"></i> Logout</span>

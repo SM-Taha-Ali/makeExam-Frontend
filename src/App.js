@@ -5,6 +5,7 @@ import ExamMaker from "./components/ExamMaker/ExamMaker"
 import TestConduct from "./components/TestConduct/TestConduct"
 import PreExamForm from "./components/ExamMaker/PreExamForm"
 import Register from './components/Register';
+import Pastpapers from './components/Admin/Pastpapers'
 import Login from './components/Login';
 import GlobalState from './context/GlobalState';
 import { useSelector } from 'react-redux';
@@ -14,7 +15,7 @@ import {
   Route
 } from "react-router-dom";
 import ProtectedRoute from './components/ProtectedRoute';
-import Admin from './components/Admin';
+import Admin from './components/Admin/Admin';
 
 
 function App() {
@@ -26,7 +27,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin" element={<Admin />} >
+              <Route path="pastpapers" element={<Pastpapers />} />
+            </Route>
             <Route path="/exam-maker"
              element={<ProtectedRoute
              redirectPath='/login'

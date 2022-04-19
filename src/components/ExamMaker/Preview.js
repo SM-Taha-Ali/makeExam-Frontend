@@ -84,40 +84,40 @@ const Preview = () => {
             <div id={`pdf_${ind}`} className="pdf_hidden">
               {ind == 0 &&
                 <>
-                  <div>
-                    <h4 className='text-center'>{preExam.institute}</h4>
-                    <p className='text-center fs-4'>{preExam.exam_name}</p>
-                    <h4 className='text-center'>{preExam.paper_name}</h4>
-                    <h5 className='text-center'>REGULAR AND PRIVATE CANDIDATES</h5>
+                  <div contentEditable={true}>
+                    <h4 contentEditable={true} className='text_black text-center'>{preExam.institute}</h4>
+                    <p contentEditable={true} className='text_black text-center fs-4'>{preExam.exam_name}</p>
+                    <h4 contentEditable={true} className='text_black text-center'>{preExam.paper_name}</h4>
+                    <h5 contentEditable={true} className='text_black text-center'>REGULAR AND PRIVATE CANDIDATES</h5>
                   </div>
-                  <div>
-                    <div className="row">
+                  <div contentEditable={true}>
+                    <div className="row" contentEditable={true}>
                       <div className="col-4 text-center"></div>
-                      <div className="col-4 text-center"><h6>SECTION "B"</h6></div>
-                      <div className="col-4 text-center"><h6>(45 marks)</h6></div>
+                      <div className="text_black col-4 text-center" contentEditable={true}><h6>SECTION "B"</h6></div>
+                      <div className="text_black col-4 text-center" contentEditable={true}><h6>(45 marks)</h6></div>
                     </div>
                     <div className="row">
                       <div className="col-3 text-center"></div>
-                      <div className="col-6 text-center"><h6>SHORT QUESTION ANSWERS</h6></div>
+                      <div className="text_black col-6 text-center" contentEditable={true}><h6>SHORT QUESTION ANSWERS</h6></div>
                       <div className="col-3 text-center"><h6></h6></div>
                     </div>
                   </div>
                 </>}
               {data.map((quest, idx) => {
                 return <div className='row py-1' key={idx}>
-                  <div className="col-md-1 text-center">{quest.qno}</div>
-                  <div className="col-md-9 text-wrap">{quest.question}</div>
-                  <div className="col-md-2">{quest.marks}</div>
+                  <div className="text_black col-md-1 text-center" contentEditable={true}>{quest.qno}</div>
+                  <div className="text_black col-md-9 text-wrap" contentEditable={true}>{quest.question}</div>
+                  <div className="text_black col-md-2" contentEditable={true}>{quest.marks}</div>
                   {
                     quest.subQuestion.map((subP, sidx) => {
                       return <div className="row ms-1" key={sidx}>
-                        <div className="col-md-1 text-center">{subP.qno}</div>
-                        <div className="col-md-11 text-wrap">{subP.question}</div>
+                        <div className="text_black col-md-1 text-center">{subP.qno}</div>
+                        <div className="text_black col-md-11 text-wrap">{subP.question}</div>
                         {
                           subP.subFurther.map((subfr, fidx) => {
                             return <div className="row ms-1" key={fidx}>
-                              <div className="col-md-1 text-center">{subfr.qno}</div>
-                              <div className="col-md-11 text-wrap">{subfr.question}</div>
+                              <div className="text_black col-md-1 text-center">{subfr.qno}</div>
+                              <div className="text_black col-md-11 text-wrap">{subfr.question}</div>
                             </div>
                           })
                         }
@@ -130,16 +130,16 @@ const Preview = () => {
         })}
         <div id="pdf" className="pdf">
           {(index == 0) && <>
-            <div>
-              <h4 className='text-center'>{preExam.institute}</h4>
+            <div contentEditable={true}>
+              <h4 className='text-center' contentEditable={true}>{preExam.institute}</h4>
               <p className='text-center fs-4'>{preExam.exam_name}</p>
               <h4 className='text-center'>{preExam.paper_name}</h4>
-              <h5 className='text-center'>REGULAR AND PRIVATE CANDIDATES</h5>
+              <h5 className='text-center' contentEditable={true}>REGULAR AND PRIVATE CANDIDATES</h5>
             </div>
             <div>
               <div className="row">
                 <div className="col-4 text-center"></div>
-                <div className="col-4 text-center"><h6>SECTION "B"</h6></div>
+                <div className="col-4 text-center" contentEditable={true}><h6>SECTION "B"</h6></div>
                 <div className="col-4 text-center"><h6>(45 marks)</h6></div>
               </div>
               <div className="row">
@@ -151,9 +151,9 @@ const Preview = () => {
           </>}
           {questions.map((quest, idx) => {
             return <div className='row py-1' key={idx}>
-              <div className="col-md-1 text-center">{quest.qno}</div>
-              <div className="col-md-9 text-wrap">{quest.question}</div>
-              <div className="col-md-2">{quest.marks}</div>
+              <div className="col-md-1 text-center" contentEditable={true}>{quest.qno}</div>
+              <div className="col-md-9 text-wrap" contentEditable={true}>{quest.question}</div>
+              <div className="col-md-2" contentEditable={true}>{quest.marks}</div>
               {
                 quest.subQuestion.map((subP, sidx) => {
                   return <div className="row ms-1" key={sidx}>

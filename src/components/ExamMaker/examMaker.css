@@ -100,6 +100,10 @@
     max-height: 837px;
 }
 
+.text_black{
+    color: black;
+}
+
 .pdf_hidden {
     padding: 5px;
     width: 590px;
@@ -189,7 +193,9 @@
     z-index: 1;
     right: 0;
   }
-  
+  [contenteditable] {
+    outline: 0px solid transparent;
+  }
   /* Links inside the dropdown */
   .dropdown-content span, a {
     color: #09be7c;
