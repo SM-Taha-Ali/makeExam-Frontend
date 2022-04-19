@@ -1,12 +1,15 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useContext, useRef } from 'react'
 import "./examMaker.css"
 import Header from '../Header'
 import Sidepane from "./Sidepane"
 import Preview from "./Preview"
 import Select from 'react-select';
 import globalContext from "../../context/globalContext"
+import Login from '../Login'
 
 const ExamMaker = () => {
+
+  const { questions, setQuestions } = useContext(globalContext)
 
   const pastPaperRef = useRef(null)
   const questionBankRef = useRef(null)
@@ -57,7 +60,7 @@ const ExamMaker = () => {
       subQuestion: [{ question: "ok this is subpart", subFurther: [{ question: "ok this is subpart" }] }]
     },
     {
-      id: 1,
+      id: 2,
       year: 2017,
       section: "A",
       marks: "12",
@@ -65,7 +68,7 @@ const ExamMaker = () => {
       subQuestion: [{ question: "ok this is subpart", subFurther: [{ question: "ok this is subpart" }] }]
     },
     {
-      id: 1,
+      id: 3,
       year: 2017,
       section: "A",
       marks: "12",
@@ -73,7 +76,7 @@ const ExamMaker = () => {
       subQuestion: [{ question: "ok this is subpart", subFurther: [{ question: "ok this is subpart" }] }]
     },
     {
-      id: 1,
+      id: 4,
       year: 2017,
       section: "A",
       marks: "12",
@@ -87,109 +90,35 @@ const ExamMaker = () => {
     // setcurrentQuest(...currentQuest, {question:`${(((e.target).parentNode).previousElementSibling).childNodes[0].textContent}`, part:`${(((e.target).parentNode).previousElementSibling).childNodes[x].textContent}`})
   }
 
+  var checkedQuestions = []
+
+  const handleChange = (e) => {
+    if (e.target.checked) {
+      checkedQuestions.push(e.target.dataset.id)
+    }
+  }
+
+  const addQuestionToPreview = () => {
+    let pastPaperQuest = [...questions]
+    checkedQuestions.forEach((id) => {
+      let count = 0
+      pastQuestions.map((question) => {
+        if (question.id == id) {
+          pastPaperQuest.push(question)
+        }
+      })
+    })
+    setQuestions(pastPaperQuest)
+    let checkboxes = document.getElementsByName("add_question")
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false
+    })
+  }
+
   return (
     <>
       <Header />
-      {/*Login Modal*/}
-      <div className="modal fade" id="login" role="dialog">
-        <div className="modal-dialog modal-dialog-centered">
-          {/* Modal content no 1*/}
-          <div className="modal-content">
-            <div className="modal-header">
-              <h4 className="modal-title d-flex flex-row justify-content-center">Login</h4>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div className="modal-body padtrbl">
-              <div className="login-box-body">
-                <p className="login-box-msg">Sign in to start your session</p>
-                <div className="form-group">
-                  <form name="" id="loginForm">
-                    <div className="form-group has-feedback">
-                      {/*--- username ------------*/}
-                      <input
-                        className="form-control"
-                        placeholder="Username"
-                        id="loginid"
-                        type="text"
-                        autoComplete="off"
-                      />
-                      <span
-                        style={{
-                          display: "none",
-                          fontWeight: "bold",
-                          position: "absolute",
-                          color: "red",
-                          padding: 4,
-                          fontSize: 11,
-                          backgroundColor: "rgba(128, 128, 128, 0.26)",
-                          zIndex: 17,
-                          right: 27,
-                          top: 5,
-                        }}
-                        id="span_loginid"
-                      />
-                      {/*-Alredy exists  ! */}
-                      <span className="glyphicon glyphicon-user form-control-feedback" />
-                    </div>
-                    <div className="form-group has-feedback">
-                      {/*--- password ------------*/}
-                      <input
-                        className="form-control"
-                        placeholder="Password"
-                        id="loginpsw"
-                        type="password"
-                        autoComplete="off"
-                      />
-                      <span
-                        style={{
-                          display: "none",
-                          fontWeight: "bold",
-                          position: "absolute",
-                          color: "grey",
-                          padding: 4,
-                          fontSize: 11,
-                          backgroundColor: "rgba(128, 128, 128, 0.26)",
-                          zIndex: 17,
-                          right: 27,
-                          top: 5,
-                        }}
-                        id="span_loginpsw"
-                      />
-                      {/*-Alredy exists  ! */}
-                      <span className="glyphicon glyphicon-lock form-control-feedback" />
-                    </div>
-                    <div className="">
-                      <div className="checkbox icheck">
-                        <label>
-                          <input type="checkbox" id="loginrem" /> Remember Me
-                        </label>
-                      </div>
-                    </div>
-                    <div className="">
-                      <button
-                        type="button"
-                        className="btn btn-green btn-block btn-flat"
-                      // onClick="userlogin()"
-                      >
-                        Sign In
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Login Modal*/}
-
+      
       {/* Past Papers Modal */}
 
       <div>
@@ -250,35 +179,36 @@ const ExamMaker = () => {
                     {
                       pastQuestions.map((question, i) => {
                         return <tr>
-                          <td>{i}</td>
+                          <td>{i + 1}</td>
                           <td>
                             <p className='text-wrap'>
-                            {question.question}
+                              {question.question}
                             </p>
                             {question.subQuestion.map((subPart, j) => {
                               return <p className='text-wrap ms-1'>
                                 {j} {subPart.question}
-                                {subPart.subFurther.map((subFur, k)=>{
+                                {subPart.subFurther.map((subFur, k) => {
                                   <p className='text-wrap ms-2'>
-                                   {k} {subFur.question}
-                                </p>
+                                    {k} {subFur.question}
+                                  </p>
                                 })}
                               </p>
                             })}
                           </td>
                           <td className='text-center'>
-                            <input class="form-check-input chkbox" type="checkbox" value="" id="flexCheckDefault" />
+                            {/* <input className="form-check-input chkbox" type="checkbox" value="" id="flexCheckDefault" /> */}
+                            <input type="checkbox" className="btn-check" name='add_question' id={`btncheck${i}`} data-id={question.id} onChange={handleChange} autoComplete="off" />
+                            <label className="btn btn-outline-success" htmlFor={`btncheck${i}`}><i className="fas fa-check-circle"></i></label>
                           </td>
                         </tr>
                       })
                     }
-                    
                   </tbody>
                 </table>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-                <button type="button" className="btn btn-success" data-bs-dismiss="modal"><i className="fas fa-plus-circle mr-1"></i> Add</button>
+                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={addQuestionToPreview}><i className="fas fa-plus-circle mr-1"></i> Add</button>
               </div>
             </div>
           </div>
@@ -332,44 +262,39 @@ const ExamMaker = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>
-                        <p className='text-wrap'>
-                          How did Pakistan came into being? Who was the founder of Pakistan? Write briefly.
-                        </p>
-                      </td>
-                      <td className='text-center'>
-                        <button className="btn btn-outline-success" onClick={addDefaultVal}><i className="fas fa-plus-circle"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>
-                        <p className='text-wrap'>
-                          How did Pakistan came into being? Who was the founder of Pakistan? Write briefly.
-                        </p>
-                      </td>
-                      <td className='text-center'>
-                        <button className="btn btn-outline-success" onClick={addDefaultVal}><i className="fas fa-plus-circle"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>
-                        <p className='text-wrap'>
-                          How did Pakistan came into being? Who was the founder of Pakistan? Write briefly.
-                        </p>
-                      </td>
-                      <td className='text-center'>
-                        <button className={`btn ${checkedClass ? "btn-success" : "btn-outline-success"}`} onClick={addDefaultVal}><i className="fas fa-plus-circle"></i></button>
-                      </td>
-                    </tr>
+                    {
+                      pastQuestions.map((question, i) => {
+                        return <tr>
+                          <td>{i + 1}</td>
+                          <td>
+                            <p className='text-wrap'>
+                              {question.question}
+                            </p>
+                            {question.subQuestion.map((subPart, j) => {
+                              return <p className='text-wrap ms-1'>
+                                {j} {subPart.question}
+                                {subPart.subFurther.map((subFur, k) => {
+                                  <p className='text-wrap ms-2'>
+                                    {k} {subFur.question}
+                                  </p>
+                                })}
+                              </p>
+                            })}
+                          </td>
+                          <td className='text-center'>
+                            {/* <input className="form-check-input chkbox" type="checkbox" value="" id="flexCheckDefault" /> */}
+                            <input type="checkbox" className="btn-check" name='add_question' id={`btncheck${i}`} data-id={question.id} onChange={handleChange} autoComplete="off" />
+                            <label className="btn btn-outline-success" htmlFor={`btncheck${i}`}><i className="fas fa-check-circle"></i></label>
+                          </td>
+                        </tr>
+                      })
+                    }
                   </tbody>
                 </table>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={addQuestionToPreview}><i className="fas fa-plus-circle mr-1"></i> Add</button>
               </div>
             </div>
           </div>
@@ -379,8 +304,8 @@ const ExamMaker = () => {
       {/* Question Bank Modal */}
 
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-5 p-4">
+        <div className="d-flex flex-row flex-wrap justify-content-between">
+          <div className="sidepane_wrapper">
             <div className="my-3">
               <div className="btn-group" role="group" aria-label="Basic outlined example">
                 <button type="button" className="btn btn-outline-success" onClick={pastRef}>Past Papers</button>
@@ -390,7 +315,7 @@ const ExamMaker = () => {
             </div>
             <Sidepane dfltval={dfltval} setdfltval={setdfltval} />
           </div>
-          <div className="col-md-7 p-4">
+          <div className="preview_wrapper pt-4">
             <Preview />
           </div>
         </div>

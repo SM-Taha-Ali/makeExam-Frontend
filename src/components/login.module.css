@@ -1,0 +1,17 @@
+.googleBtn{
+    display: block;
+    width: 100%;
+}
+
+.login_container{
+    width: 500px;
+    margin-top: 10vh;
+}
+
+@media only screen and (max-width: 640px) {
+    .login_container{
+        width: 100%;
+        margin-top: 0px;
+    }
+    
+}

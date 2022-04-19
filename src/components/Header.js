@@ -1,7 +1,36 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useContext, useState } from 'react'
 import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { actionCreators } from "../state/index"
+import { useSelector } from 'react-redux';
+import Register from './Register';
+import globalContext from '../context/globalContext';
 
 const Header = () => {
+    const isAuthenticated = useSelector(state => state.auth)
+
+    const context = useContext(globalContext)
+    const { loginModal, loginStatus, setloginStatus, getUserDetails, details, setdetails } = context
+
+    const dispatch = useDispatch()
+
+
+    const token = localStorage.getItem('token')
+
+    useEffect(() => {
+        async function fetchData() {
+            let userDetails = await getUserDetails(token)
+            setdetails(userDetails)
+        } fetchData()
+    }, [])
+
+
+
+    const logout = async () => {
+        localStorage.clear()
+        dispatch(actionCreators.authLogout())
+        window.location.reload()
+    }
 
     return (
         <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light navbar navbar-default navbar-fixed-top">
@@ -21,26 +50,37 @@ const Header = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ml-auto">
-                    <li>
+                    <li className='d-flex flex-column justify-content-center'>
                         <a href="/#feature">Features</a>
                     </li>
-                    <li>
+                    <li className='d-flex flex-column justify-content-center'>
                         <Link to="/exam-maker">Exam-Maker</Link>
                     </li>
-                    <li>
+                    <li className='d-flex flex-column justify-content-center'>
                         <Link to="/test-conduct">Test-Conduct</Link>
                     </li>
-                    <li>
+                    <li className='d-flex flex-column justify-content-center'>
                         <a href="/#pricing">Pricing</a>
                     </li>
-                    <li>
-                        <a href="#" data-target="#login" data-toggle="modal">
-                            Sign in
-                        </a>
-                    </li>
-                    <li className="btn-trial">
+                    {!isAuthenticated ?
+                        <li className='d-flex flex-column justify-content-center'>
+                            <Link to="/login">Sign in</Link>
+                        </li>
+                        :
+                        <li className="dropdown">
+                            <button className="dropbtn"><i class="fas fa-user me-1"></i> {details.lastname}</button>
+                            <div className="dropdown-content">
+                                {(details.role == "admin") ?
+                                    <Link to="/admin"><i class="fas fa-unlock-alt me-2"></i> Admin</Link>
+                                    : ""
+                                }
+                                <span onClick={logout}><i class="fas fa-sign-out-alt me-1"></i> Logout</span>
+                            </div>
+                        </li>
+                    }
+                    {/* <li className="btn-trial">
                         <a href="#footer">Free Trail</a>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </nav>
