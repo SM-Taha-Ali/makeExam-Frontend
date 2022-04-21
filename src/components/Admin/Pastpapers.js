@@ -17,8 +17,9 @@ const Pastpapers = () => {
         }
     }
 
-    const { questions, initialQuest, setInitialQuest, setQuestions, page, setPage, index } = useContext(globalContext)
-
+    const { questions, setQuestions, page, setPage, index } = useContext(globalContext)
+    const [initialQuest, setInitialQuest] = useState({ section: "", year: "", board: "", subject: "", qno: "", marks: "", question: "", subQuestion: [] })
+    const [initialMcq, setInitialMcq] = useState({ section: "", year: "", board: "", subject: "", mcqno: "", marks: "", question: "", options: [] })
     const [subQuest, setSubQuest] = useState([])
     const [options, setOptions] = useState([])
     const [subFurther, setSubFurther] = useState([])
@@ -49,15 +50,29 @@ const Pastpapers = () => {
     ];
 
     const onChange = (e) => {
-        setInitialQuest({ ...initialQuest, [e.target.name]: e.target.value })
+        try {
+            setInitialQuest({ ...initialQuest, [e.target.name]: e.target.value })
+        } catch (error) {
+            setInitialQuest({ ...initialQuest, [e.name]: e.value })
+        }
     }
-    const onChangeSec = (e) => {
-        setSection({ ...section, [e.target.name]: e.target.value })
+
+    const onChangeMcq = (e) => {
+        try {
+            setInitialMcq({ ...initialMcq, [e.target.name]: e.target.value })
+        } catch (error) {
+            setInitialMcq({ ...initialMcq, [e.name]: e.value })
+        }
     }
     const onChangeSub = (e) => {
         let subparts = [...subQuest];
         subparts[e.target.dataset.id][e.target.name] = e.target.value;
         setSubQuest(subparts)
+    }
+    const onChnageOpt = (e) => {
+        let subparts = [...options];
+        subparts[e.target.dataset.id][e.target.name] = e.target.value;
+        setOptions(subparts)
     }
     const onChangeFurth = (e) => {
         let subFur = [...subFurther]
@@ -93,11 +108,20 @@ const Pastpapers = () => {
     const addSubPart = () => {
         setSubQuest(subQuest => [...subQuest, { "qno": "", "question": "", "subFurther": [] }])
     }
-
     const deletePart = (i) => {
         let deleteArray = [...subQuest]
         deleteArray[i] = "x"
         setSubQuest(deleteArray)
+    }
+
+    const addOption = () => {
+        setOptions(options => [...options, { "mcqno": "", "question": "" }])
+    }
+
+    const deleteOption = (i) => {
+        let deleteArray = [...options]
+        deleteArray[i] = "x"
+        setOptions(deleteArray)
     }
 
     const deleteFurther = (e) => {
@@ -111,7 +135,7 @@ const Pastpapers = () => {
     }
 
     const addQuestion = () => {
-        let emptyQuestions = [...questions]
+        // let emptyQuestions = [...questions]
         let modifiedArray = subQuest
         let lolArray = subFurther
         for (let index = 0; index < subQuest.length; index++) {
@@ -126,14 +150,35 @@ const Pastpapers = () => {
         let subdeploy = initialQuest;
         subdeploy["subQuestion"] = subQuest;
         setInitialQuest(subdeploy);
-        emptyQuestions.push(initialQuest)
-        setQuestions(emptyQuestions)
-        let dummyPage = page
-        dummyPage[index] = emptyQuestions
-        setPage(dummyPage)
+        console.log(initialQuest);
+        // emptyQuestions.push(initialQuest)
+        // setQuestions(emptyQuestions)
+        // let dummyPage = page
+        // dummyPage[index] = emptyQuestions
+        // setPage(dummyPage)
+
+    };
+
+    const addMCQ = () => {
+        // let emptyQuestions = [...questions]
+        let subdeploy = initialMcq;
+        subdeploy["subQuestion"] = options;
+        setInitialQuest(subdeploy);
+        console.log(initialMcq)
+        // emptyQuestions.push(initialMcq)
+        // setQuestions(emptyQuestions)
+        // let dummyPage = page
+        // dummyPage[index] = emptyQuestions
+        // setPage(dummyPage)
     };
 
     const delQuestion = () => {
+        let hahaQuestions = [...questions]
+        hahaQuestions.pop()
+        setQuestions(hahaQuestions)
+    }
+
+    const delMCQ = () => {
         let hahaQuestions = [...questions]
         hahaQuestions.pop()
         setQuestions(hahaQuestions)
@@ -170,8 +215,8 @@ const Pastpapers = () => {
                         <div className="col-md-3">
                             <div>
                                 <Select
-                                    defaultValue={null}
-                                    onChange={onChange}
+                                    defaultValue={typePaper === "subjective" ? initialQuest.board : initialMcq.board}
+                                    onChange={typePaper === "subjective" ? onChange : onChangeMcq}
                                     options={boards}
                                     width={100}
                                     placeholder="Select Board"
@@ -182,8 +227,8 @@ const Pastpapers = () => {
                         <div className="col-md-3">
                             <div>
                                 <Select
-                                    defaultValue={null}
-                                    onChange={onChange}
+                                    value={typePaper === "subjective" ? initialQuest.subject : initialMcq.subject}
+                                    onChange={typePaper === "subjective" ? onChange : onChangeMcq}
                                     options={subjects}
                                     width={100}
                                     placeholder="Select Subject"
@@ -194,8 +239,8 @@ const Pastpapers = () => {
                         <div className="col-md-3">
                             <div>
                                 <Select
-                                    defaultValue={null}
-                                    onChange={onChange}
+                                    value={typePaper === "subjective" ? initialQuest.section : initialMcq.section}
+                                    onChange={typePaper === "subjective" ? onChange : onChangeMcq}
                                     options={sections}
                                     width={100}
                                     name="section"
@@ -205,7 +250,7 @@ const Pastpapers = () => {
                         </div>
                         <div className="col-md-3">
                             <div>
-                                <input type="text" className="form-control" placeholder='Enter Year' />
+                                <input type="text" className="form-control" value={typePaper === "subjective" ? initialQuest.year : initialMcq.year} name='year' placeholder='Enter Year' onChange={typePaper === "subjective" ? onChange : onChangeMcq} />
                             </div>
                         </div>
                     </div>
@@ -216,11 +261,11 @@ const Pastpapers = () => {
                         <div className="d-flex flex-row justify-content-between mb-3">
                             <div className='pr-4'>
                                 <label htmlFor="exampleInputPassword1" className="form-label">Question No.</label>
-                                <input type="text" className="form-control" id="exampleInputPassword1" name='qno' onChange={onChange} />
+                                <input type="text" className="form-control" id="" name='qno' value={initialQuest.qno} onChange={onChange} />
                             </div>
                             <div className='pl-4'>
                                 <label htmlFor="exampleInputPassword1" className="form-label">Marks</label>
-                                <input type="text" className="form-control" id="exampleInputPassword1" name='marks' onChange={onChange} />
+                                <input type="text" className="form-control" id="" name='marks' value={initialQuest.marks} onChange={onChange} />
                             </div>
                         </div>
                         <label htmlFor="exampleInputEmail1" className="form-label">Question</label>
@@ -231,7 +276,7 @@ const Pastpapers = () => {
                                     <div className='row pb-3'>
                                         <div className="col-md-4">
                                             <label htmlFor="exampleInputPassword1" className="form-label">Question No.</label>
-                                            <input type="text" className="form-control" data-id={i} id="exampleInputPassword1" name='qno' onChange={onChangeSub} />
+                                            <input type="text" className="form-control" data-id={i} id="exampleInputPassw" name='qno' onChange={onChangeSub} />
                                         </div>
                                     </div>
                                     <textarea className="form-control" name='question' data-id={i} placeholder={`Enter your question here...`} rows="4" onChange={onChangeSub}></textarea>
@@ -247,7 +292,7 @@ const Pastpapers = () => {
                                                         <div className='row pb-3'>
                                                             <div className="col-md-4">
                                                                 <label htmlFor="exampleInputPassword1" className="form-label">Question No.</label>
-                                                                <input type="text" className="form-control" id="exampleInputPassword1" data-id={j} data-parent={i} name='qno' onChange={onChangeFurth} />
+                                                                <input type="text" className="form-control" id="examleInputPassword1" data-id={j} data-parent={i} name='qno' onChange={onChangeFurth} />
                                                             </div>
                                                         </div>
                                                         <textarea className="form-control" name='question' data-id={j} data-parent={i} placeholder={`Enter your question here...`} rows="4" onChange={onChangeFurth}></textarea>
@@ -277,39 +322,39 @@ const Pastpapers = () => {
                             <div className="d-flex flex-row justify-content-between mb-3">
                                 <div className='pr-4'>
                                     <label htmlFor="exampleInputPassword1" className="form-label">MCQ No.</label>
-                                    <input type="text" className="form-control" id="exampleInputPassword1" name='qno' onChange={onChange} />
+                                    <input type="text" className="form-control" id="" value={initialMcq.mcqno} name='mcqno' onChange={onChangeMcq} />
                                 </div>
                                 <div className='pl-4'>
                                     <label htmlFor="exampleInputPassword1" className="form-label">Marks</label>
-                                    <input type="text" className="form-control" id="exampleInputPassword1" name='marks' onChange={onChange} />
+                                    <input type="text" className="form-control" id="" value={initialMcq.marks} name='marks' onChange={onChangeMcq} />
                                 </div>
                             </div>
                             <label htmlFor="exampleInputEmail1" className="form-label">MCQ</label>
-                            <textarea className="form-control" name='question' onKeyDown={handlekeyDown} id="question" value={initialQuest.question} onChange={onChange} placeholder="Enter your question here..." rows="6"></textarea>
+                            <textarea className="form-control" name='question' onKeyDown={handlekeyDown} id="question" value={initialMcq.question} onChange={onChangeMcq} placeholder="Enter your question here..." rows="6"></textarea>
                             {options.map((part, i) => {
                                 return (part != "x") ?
                                     <div className='mt-5 mb-2 p-3 question_maker_border' key={i}>
                                         <div className='row pb-3'>
                                             <div className="col-md-4">
                                                 <label htmlFor="exampleInputPassword1" className="form-label">Question No.</label>
-                                                <input type="text" className="form-control" data-id={i} id="exampleInputPassword1" name='qno' onChange={onChangeSub} />
+                                                <input type="text" className="form-control" data-id={i} id="exampleInputPassword1" name='mcqno' onChange={onChnageOpt} />
                                             </div>
                                         </div>
-                                        <textarea className="form-control" name='question' data-id={i} placeholder={`Enter your question here...`} rows="4" onChange={onChangeSub}></textarea>
+                                        <textarea className="form-control" name='question' data-id={i} placeholder={`Enter your question here...`} rows="4" onChange={onChnageOpt}></textarea>
                                         <div className='text-end pt-3'>
-                                            <button className="btn btn-outline-danger mr-2" onClick={() => deletePart(i)}><i className="fas fa-trash mr-2"></i>Sub-Part</button>
+                                            <button className="btn btn-outline-danger mr-2" onClick={() => deleteOption(i)}><i className="fas fa-trash mr-2"></i>Option</button>
                                         </div>
                                     </div>
                                     : ""
                             })}
                             <div className='row g-0 pt-2'>
                                 <div className="col-xl-4 col-lg-12 col-md-12 col-sm-4 mediaResponsive1 pt-3">
-                                    <button className="btn btn-success" onClick={addSubPart}><i className="fas fa-plus-circle mr-1"></i> Sub-Part</button>
+                                    <button className="btn btn-success" onClick={addOption}><i className="fas fa-plus-circle mr-1"></i>Option</button>
                                 </div>
                                 <div className="col-xl-8 col-lg-12 col-md-12 col-sm-8 mediaResponsive2 pt-3">
                                     <div className='lolResponsive'>
-                                        <button className="btn btn-danger queBtnResp" onClick={delQuestion}><i className="fas fa-trash mr-2"></i> Question</button>
-                                        <button className="btn btn-success ml-2 queBtnResp2" onClick={addQuestion}><i className="fas fa-plus-circle mr-1"></i> Question</button>
+                                        <button className="btn btn-danger queBtnResp" onClick={delMCQ}><i className="fas fa-trash mr-2"></i> MCQ</button>
+                                        <button className="btn btn-success ml-2 queBtnResp2" onClick={addMCQ}><i className="fas fa-plus-circle mr-1"></i> MCQ</button>
                                     </div>
                                 </div>
                             </div>
