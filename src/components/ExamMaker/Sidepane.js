@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useRef, useContext } from 'react'
 import globalContext from "../../context/globalContext"
+import Mcqs from './Mcqs'
 
 const Sidepane = (props) => {
     const { questions, initialQuest, setInitialQuest, setQuestions, page, setPage, index, sections, setSections } = useContext(globalContext)
 
     const [subQuest, setSubQuest] = useState([])
     const [subFurther, setSubFurther] = useState([])
-    const [section, setSection] = useState({name:"", type: "", marks:"", section:true})
+    const [section, setSection] = useState({ name: "", type: "", marks: "", section: true })
 
     const secRef = useRef(null)
 
@@ -118,6 +119,8 @@ const Sidepane = (props) => {
         console.log(sections)
     }
 
+    const [typePaper, settypePaper] = useState("subjective")
+
     return (
         <>
             {/* Section Modal */}
@@ -157,7 +160,17 @@ const Sidepane = (props) => {
             </div>
             {/* Section Modal */}
 
-            <div className="p-4 question_maker_border">
+
+            <div className="py-4">
+                <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" defaultChecked onClick={() => settypePaper("subjective")} />
+                    <label className="btn btn-outline-success" htmlFor="btnradio2">Subjective</label>
+                    <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autoComplete="off" onClick={() => settypePaper("objective")} />
+                    <label className="btn btn-outline-success" htmlFor="btnradio3">Objective</label>
+                </div>
+            </div>
+            {
+                typePaper === "subjective" ? <div className="p-4 question_maker_border">
                 <div className="d-flex flex-row justify-content-between mb-3">
                     <div className='pr-4'>
                         <label htmlFor="exampleInputPassword1" className="form-label">Question No.</label>
@@ -218,7 +231,9 @@ const Sidepane = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> : <Mcqs/>
+            }
+            
         </>
     )
 }

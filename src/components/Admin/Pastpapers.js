@@ -490,27 +490,7 @@ const Pastpapers = () => {
                                     <textarea className="form-control" name='question' data-id={i} placeholder={`Enter your question here...`} rows="4" onChange={onChangeSub}></textarea>
                                     <div className='text-end pt-3'>
                                         <button className="btn btn-outline-danger mr-2" onClick={() => deletePart(i)}><i className="fas fa-trash mr-2"></i>Sub-Part</button>
-                                        <button className="btn btn-outline-success mr-2" onClick={() => addFurther(i)}><i className="fas fa-plus-circle mr-2"></i>Sub-Part</button>
                                     </div>
-                                    {
-                                        subFurther.map(element => {
-                                            return element["parent"] == i ?
-                                                element.finalFurther.map((finalElem, j) => {
-                                                    return (finalElem != "x") ? <div className='mt-5 mb-2 p-3 question_maker_border' key={j}>
-                                                        <div className='row pb-3'>
-                                                            <div className="col-md-4">
-                                                                <label htmlFor="exampleInputPassword1" className="form-label">Question No.</label>
-                                                                <input type="text" className="form-control" id="examleInputPassword1" data-id={j} data-parent={i} name='qno' onChange={onChangeFurth} />
-                                                            </div>
-                                                        </div>
-                                                        <textarea className="form-control" name='question' data-id={j} data-parent={i} placeholder={`Enter your question here...`} rows="4" onChange={onChangeFurth}></textarea>
-                                                        <div className={`text-end pt-3`}>
-                                                            <button className="btn btn-outline-danger mr-2" value="value" data-id={j} data-parent={element["parent"]} onClick={deleteFurther}><i className="fas fa-trash mr-2"></i>Sub-Part</button>
-                                                        </div>
-                                                    </div> : ""
-                                                }) : ""
-                                        })
-                                    }
                                 </div>
                                 : ""
                         })}

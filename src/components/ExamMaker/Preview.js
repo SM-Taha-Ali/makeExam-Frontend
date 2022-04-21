@@ -3,6 +3,8 @@ import globalContext from "../../context/globalContext"
 import "./examMaker.css"
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import "./Mcqs"
+
 
 const Preview = () => {
   const { questions, setQuestions, page, setPage, index, setIndex, preExam } = useContext(globalContext)
@@ -60,6 +62,7 @@ const Preview = () => {
     } else {
       setQuestions(copyArray[index + 1])
     }
+    console.log(credentials);
   }
 
   const addPage = () => {
@@ -74,7 +77,54 @@ const Preview = () => {
       setQuestions(copyArray[index])
     }
   }
+  
 
+  // const objict = {
+  //   instituteName: preExam.institute ,
+  //   examName: preExam.exam_name , 
+  //   paperName : preExam.paper_name ,  
+  //   candidate:'REGULAR AND PRIVATE CANDIDATES',
+  //   section:'Section B',
+  //   marks:"(45 marks)"
+  // }
+
+  // useEffect(()=>{
+    
+    // localStorage.setItem("Credentials",JSON.stringify(objict))
+    // console.log("haseeb");
+    
+  // },[])
+  
+  // saveToLocal();
+  let a =JSON.parse(localStorage.getItem('Credentials'))
+  // console.log(a)
+  // const [myObj,SetMyObj] = useState(a)  
+  const[credentials,setCredentials]=useState({"instituteName":a.instituteName ,"examName": a.examName , "paperName" : a.paperName ,  "candidate":a.candidate,"section":a.section,"marks":a.marks})
+  
+
+  
+ 
+  
+
+
+
+  const handleChange = (e)=>{
+      setCredentials({...credentials ,[e.target.name]:e.target.value})
+  }
+
+  function handleLocalStorage(names){
+    let obj =JSON.parse(localStorage.getItem('Credentials'))
+    obj[names]=credentials[names]
+    localStorage.setItem('Credentials',JSON.stringify(obj))
+    let b = JSON.parse(localStorage.getItem("Credentials"))
+    // SetMyObj(b)
+    setCredentials(b)
+
+  }
+
+  const handleBlur=(name)=>{
+    handleLocalStorage(name)
+  }
 
   return (
     <div>
@@ -85,16 +135,16 @@ const Preview = () => {
               {ind == 0 &&
                 <>
                   <div contentEditable={true}>
-                    <h4 contentEditable={true} className='text_black text-center'>{preExam.institute}</h4>
-                    <p contentEditable={true} className='text_black text-center fs-4'>{preExam.exam_name}</p>
-                    <h4 contentEditable={true} className='text_black text-center'>{preExam.paper_name}</h4>
-                    <h5 contentEditable={true} className='text_black text-center'>REGULAR AND PRIVATE CANDIDATES</h5>
+                    <h4  contentEditable={true}  className='text_black text-center'>{credentials.instituteName}</h4>
+                    <p contentEditable={true} className='text_black text-center fs-4'>{credentials.examName}</p>
+                    <h4 contentEditable={true} className='text_black text-center'>{credentials.paperName}</h4>
+                    <h5 contentEditable={true} className='text_black text-center'>{credentials.candidate}</h5>
                   </div>
                   <div contentEditable={true}>
                     <div className="row" contentEditable={true}>
-                      <div className="col-4 text-center"></div>
-                      <div className="text_black col-4 text-center" contentEditable={true}><h6>SECTION "B"</h6></div>
-                      <div className="text_black col-4 text-center" contentEditable={true}><h6>(45 marks)</h6></div>
+                      <div  className="col-4 text-center"></div>
+                      <div className="text_black col-4 text-center" contentEditable={true}><h6>{credentials.section}</h6></div>
+                      <div className="text_black col-4 text-center" contentEditable={true}><h6>{credentials.marks}</h6></div>
                     </div>
                     <div className="row">
                       <div className="col-3 text-center"></div>
@@ -131,16 +181,16 @@ const Preview = () => {
         <div id="pdf" className="pdf">
           {(index == 0) && <>
             <div contentEditable={true}>
-              <h4 className='text-center' contentEditable={true}>{preExam.institute}</h4>
-              <p className='text-center fs-4'>{preExam.exam_name}</p>
-              <h4 className='text-center'>{preExam.paper_name}</h4>
-              <h5 className='text-center' contentEditable={true}>REGULAR AND PRIVATE CANDIDATES</h5>
+              <input style={{borderStyle:'none',width:'100%',outline:'none'}} value={credentials.instituteName} onBlur={()=>handleBlur("instituteName")} onChange={handleChange} name="instituteName" className='text-center'  contentEditable={true}/><br />
+              <input style={{borderStyle:'none',width:'100%',outline:'none'}} onBlur={()=>handleBlur("examName")}  onChange={handleChange} name="examName" className='text-center fs-4'value={credentials.examName}/><br />
+              <input style={{borderStyle:'none',width:'100%',outline:'none'}} onBlur={()=>handleBlur("paperName")} onChange={handleChange} name="paperName"  className='text-center' value={credentials.paperName}/><br />
+              <input style={{borderStyle:'none',width:'100%',outline:'none'}} onBlur={()=>handleBlur("candidate")} onChange={handleChange} name="candidate" className='text-center' value={credentials.candidate} contentEditable={true}/><br />
             </div>
             <div>
               <div className="row">
                 <div className="col-4 text-center"></div>
-                <div className="col-4 text-center" contentEditable={true}><h6>SECTION "B"</h6></div>
-                <div className="col-4 text-center"><h6>(45 marks)</h6></div>
+                <div className="col-4 text-center" contentEditable={true}><input style={{borderStyle:'none',width:'100%',outline:'none'}} onBlur={()=>handleBlur("section")} onChange={handleChange} name="section"  className='text-center'value={credentials.section}/><br /></div>
+                <div className="col-4 text-center"><input style={{borderStyle:'none',width:'100%',outline:'none'}} onBlur={()=>handleBlur("marks")} onChange={handleChange} name="marks"  className='text-center' value={credentials.marks}/></div>
               </div>
               <div className="row">
                 <div className="col-3 text-center"></div>

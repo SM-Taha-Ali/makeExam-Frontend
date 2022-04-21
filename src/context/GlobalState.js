@@ -27,6 +27,24 @@ const GlobalState = (props) => {
         return json
     }
 
+    
+//   const objict = {
+//     instituteName: "dxf" ,
+//     examName: "sedzf" , 
+//     paperName : "sfedf" ,  
+//     // instituteName: preExam.institute ,
+//     // examName: preExam.exam_name , 
+//     // paperName : preExam.paper_name ,  
+//     candidate:'REGULAR AND PRIVATE CANDIDATES',
+//     section:'Section B',
+//     marks:"(45 marks)"
+//   }
+
+//   const saveToLocal=()=>{
+//     localStorage.setItem("Credentials",JSON.stringify(objict))
+
+//   }
+
     return (
         <GlobalContext.Provider value={{ questions, initialQuest, subQuest, subFurther, page, index, loginModal, loginStatus, preExam, sections, details, setdetails, setSections, setpreExam, getUserDetails, setloginStatus, setIndex, setPage, setInitialQuest, setSubQuest, setSubFurther, setQuestions }}>
             {props.children}

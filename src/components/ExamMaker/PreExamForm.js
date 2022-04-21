@@ -6,7 +6,7 @@ import globalContext from "../../context/globalContext"
 
 
 function Pre_exam_form() {
-  const { preExam, setpreExam } = useContext(globalContext)
+  const { preExam, setpreExam ,saveToLocal} = useContext(globalContext)
 
   const navigate = useNavigate()
 
@@ -35,11 +35,26 @@ function Pre_exam_form() {
       setCredentials({ ...credentials, [e.name]: e.value })
     }
   }
+  const objict = {
+    instituteName: "dxf" ,
+    examName: "sedzf" , 
+    paperName : "sfedf" ,  
+    // instituteName: preExam.institute ,
+    // examName: preExam.exam_name , 
+    // paperName : preExam.paper_name ,  
+    candidate:'REGULAR AND PRIVATE CANDIDATES',
+    section:'Section B',
+    marks:"(45 marks)"
+  }
+
+    
 
   const proceed = (e) => {
     e.preventDefault()
     setpreExam(credentials)
     navigate("/exam-maker-success")
+    // console.log(preExam.exam_name)
+    localStorage.setItem("Credentials",JSON.stringify(objict))
   }
 
   return (
