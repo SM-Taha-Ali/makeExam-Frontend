@@ -3,6 +3,8 @@ import globalContext from "../../context/globalContext"
 import "./examMaker.css"
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import "./Mcqs"
+
 
 const Preview = () => {
   const { questions, setQuestions, page, setPage, index, setIndex, preExam } = useContext(globalContext)
