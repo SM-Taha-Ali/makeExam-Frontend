@@ -84,6 +84,10 @@
     border: 1px solid #04AA6D;
 }
 
+.color_apna{
+    color: #04AA6D;
+}
+
 .chkbox:checked {
     background-color: #04AA6D !important;
     outline: green !important;
