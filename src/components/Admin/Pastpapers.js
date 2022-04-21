@@ -51,15 +51,43 @@ const Pastpapers = () => {
     const onChange = (e) => {
         setInitialQuest({ ...initialQuest, [e.target.name]: e.target.value })
     }
-    
     const onChangeSec = (e) => {
         setSection({ ...section, [e.target.name]: e.target.value })
     }
-
     const onChangeSub = (e) => {
         let subparts = [...subQuest];
         subparts[e.target.dataset.id][e.target.name] = e.target.value;
         setSubQuest(subparts)
+    }
+    const onChangeFurth = (e) => {
+        let subFur = [...subFurther]
+        console.log("SUBFURTHER", subFur, "SUBQUEST", subQuest)
+        for (let j = 0; j < subFurther.length; j++) {
+            if (subFurther[j]["parent"] == e.target.dataset.parent) {
+                subFur[j].finalFurther[e.target.dataset.id][e.target.name] = e.target.value
+            }
+        }
+        setSubFurther(subFur)
+    }
+    const addFurther = (i) => {
+        let checkArray = [...subFurther]
+        let parentPresent = false
+        for (let j = 0; j < checkArray.length; j++) {
+            if (checkArray[j]["parent"] == i) {
+                checkArray[j]["finalFurther"].push({ "parent": i, "qno": "", "question": "" })
+                parentPresent = true
+                break
+            } else {
+                parentPresent = false
+            }
+        };
+        let modifiedArray = [...subQuest]
+        if (checkArray.length == 0 || !parentPresent) {
+            setSubFurther(subFurther => [...subFurther, { "parent": i, "finalFurther": [{ "parent": 0, "qno": "", "question": "" }] }])
+        }
+        setSubQuest(modifiedArray)
+        console.log(subFurther)
+
     }
 
     const addSubPart = () => {
@@ -198,7 +226,7 @@ const Pastpapers = () => {
                         <label htmlFor="exampleInputEmail1" className="form-label">Question</label>
                         <textarea className="form-control" name='question' onKeyDown={handlekeyDown} id="question" value={initialQuest.question} onChange={onChange} placeholder="Enter your question here..." rows="6"></textarea>
                         {subQuest.map((part, i) => {
-                            return (part != "x") ? 
+                            return (part != "x") ?
                                 <div className='mt-5 mb-2 p-3 question_maker_border' key={i}>
                                     <div className='row pb-3'>
                                         <div className="col-md-4">
