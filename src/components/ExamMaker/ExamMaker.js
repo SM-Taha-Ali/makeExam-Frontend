@@ -4,8 +4,10 @@ import Header from '../Header'
 import Sidepane from "./Sidepane"
 import Preview from "./Preview"
 import Select from 'react-select';
-import globalContext from "../../context/globalContext"
+// import globalContext from "../../context/globalContext"
+import globalContext from '../../context/globalContext'
 import Login from '../Login'
+import O_Levels from './cambridege/O_Levels'
 
 const ExamMaker = () => {
 
@@ -321,7 +323,8 @@ const ExamMaker = () => {
             <Sidepane/>
           </div>
           <div className="preview_wrapper pt-4">
-            <Preview />
+            {/* <Preview /> */}
+            <O_Levels/>
           </div>
         </div>
       </div>

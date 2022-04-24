@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useContext } from 'react'
 import globalContext from "../../context/globalContext"
-import Mcqs from './Mcqs'
+import Mcqs from './mcqs'
 
 const Sidepane = (props) => {
     const { questions, initialQuest, setInitialQuest, setQuestions, page, setPage, index, sections, setSections } = useContext(globalContext)
@@ -94,6 +94,8 @@ const Sidepane = (props) => {
         let dummyPage = page
         dummyPage[index] = emptyQuestions
         setPage(dummyPage)
+
+        console.log(questions)
     };
 
     const delQuestion = () => {

@@ -35,7 +35,7 @@ function Pre_exam_form() {
       setCredentials({ ...credentials, [e.name]: e.value })
     }
   }
-  const objict = {
+  const Karachiobj = {
     instituteName: "dxf" ,
     examName: "sedzf" , 
     paperName : "sfedf" ,  
@@ -47,6 +47,16 @@ function Pre_exam_form() {
     marks:"(45 marks)"
   }
 
+  const CambridgeOlevels = {
+    paperName : "COMPUTER SCIENCE",
+    paperType:"Paper 2 Problem-solving and Programming",
+    instructions:"You must answer on the question paper.",
+    instructions_2 :"No additional materials are needed.",
+    code:"2210/21",
+    date:"May/June 2021",
+    time:"1 hour 45 minutes"
+  }
+
     
 
   const proceed = (e) => {
@@ -54,7 +64,8 @@ function Pre_exam_form() {
     setpreExam(credentials)
     navigate("/exam-maker-success")
     // console.log(preExam.exam_name)
-    localStorage.setItem("Credentials",JSON.stringify(objict))
+    // localStorage.setItem("Credentials",JSON.stringify(Karachiobj))
+    localStorage.setItem("Credentials",JSON.stringify(CambridgeOlevels))
   }
 
   return (

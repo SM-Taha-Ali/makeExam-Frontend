@@ -3,7 +3,7 @@ import globalContext from "../../context/globalContext"
 import "./examMaker.css"
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import "./Mcqs"
+// import "./Mcqs"
 
 
 const Preview = () => {
@@ -79,26 +79,7 @@ const Preview = () => {
   }
   
 
-  // const objict = {
-  //   instituteName: preExam.institute ,
-  //   examName: preExam.exam_name , 
-  //   paperName : preExam.paper_name ,  
-  //   candidate:'REGULAR AND PRIVATE CANDIDATES',
-  //   section:'Section B',
-  //   marks:"(45 marks)"
-  // }
-
-  // useEffect(()=>{
-    
-    // localStorage.setItem("Credentials",JSON.stringify(objict))
-    // console.log("haseeb");
-    
-  // },[])
-  
-  // saveToLocal();
   let a =JSON.parse(localStorage.getItem('Credentials'))
-  // console.log(a)
-  // const [myObj,SetMyObj] = useState(a)  
   const[credentials,setCredentials]=useState({"instituteName":a.instituteName ,"examName": a.examName , "paperName" : a.paperName ,  "candidate":a.candidate,"section":a.section,"marks":a.marks})
   
 
@@ -117,7 +98,7 @@ const Preview = () => {
     obj[names]=credentials[names]
     localStorage.setItem('Credentials',JSON.stringify(obj))
     let b = JSON.parse(localStorage.getItem("Credentials"))
-    // SetMyObj(b)
+  
     setCredentials(b)
 
   }
